@@ -29,39 +29,35 @@ import BusinessPublicProfile from './pages/businessPublicProfile.jsx'
 setupListeners(store.dispatch);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <React.StrictMode>
-      <Provider store={store}>
-        <BrowserRouter>
-          <DarkModeProvider>
-            <Routes>
-              <Route element={<RootLayout />}>
-                <Route path="/"            element={<Home />} />
-                <Route path="/about"       element={<About />} />
-                <Route path="/findfreelan" element={<FindFreelancers />} />
-                <Route path="/findwork"    element={<FindWork />} />
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <DarkModeProvider>
+          <Routes>
+            <Route element={<RootLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/findfreelan" element={<FindFreelancers />} />
+              <Route path="/findwork" element={<FindWork />} />
 
-                
-                <Route path="/jobs/:jobId" element={<DetailWorkPage />} />
-                 <Route path="/contact" element={<ContactPage />} />
+              <Route path="/jobs/:jobId" element={<DetailWorkPage />} />
+              <Route path="/contact" element={<ContactPage />} />
 
-                {/* /profile auto-routes to correct page based on userType */}
-                <Route path="/profile" element={<ProfileRouter />} />
-                <Route path="/freelancers/:userId" element={<FreelancerPublicProfile />} />
-                <Route path="/businesses/:userId" element={<BusinessPublicProfile />} />
+              <Route path="/profile" element={<ProfileRouter />} />
+              <Route path="/freelancers/:userId" element={<FreelancerPublicProfile />} />
+              <Route path="/businesses/:userId" element={<BusinessPublicProfile />} />
 
-                <Route path="/profile-business"      element={<ProfileBusinessPage />} />
-                <Route path="/services/:serviceId"   element={<CardDetailFreelancer />} />
-               
-                <Route path="/login"                 element={<LoginPage />} />
-                <Route path="/register"              element={<Register />} />
-                
-              </Route>
-            </Routes>
-          </DarkModeProvider>
-          <ToastContainer position="top-right" autoClose={800} />
-        </BrowserRouter>
-      </Provider>
-    </React.StrictMode>
-  </StrictMode>,
-)
+              <Route path="/profile-business" element={<ProfileBusinessPage />} />
+              <Route path="/services/:serviceId" element={<CardDetailFreelancer />} />
+
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<Register />} />
+            </Route>
+          </Routes>
+        </DarkModeProvider>
+
+        <ToastContainer position="top-right" autoClose={800} />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);
