@@ -147,10 +147,8 @@ export default function SignUpPage() {
   const isBusiness = form.role === "business";
   const userType = isBusiness ? "BUSINESS_OWNER" : "FREELANCER";
 
-  // normalize email
   const email = form.email.trim().toLowerCase();
 
-  // basic validation
   if (
     !email ||
     !form.password ||
@@ -168,16 +166,19 @@ export default function SignUpPage() {
     return;
   }
 
-  // ✅ Build base body (NO username yet)
   const body = {
     fullName: `${form.firstName} ${form.lastName}`.trim(),
     gender: form.gender,
+    profileImageUrl: "",
     email,
-    password: form.password,
+    phone: "",
     userType,
+    companyName: "",
+    companyWebsite: "",
+    industry: "",
+    password: form.password,
   };
 
-  // ✅ ADD THIS RIGHT HERE
   if (!isBusiness) {
     const base = email.split("@")[0].replace(/[^a-zA-Z0-9_]/g, "");
     const uniqueSuffix = Math.random().toString(36).slice(2, 6);
